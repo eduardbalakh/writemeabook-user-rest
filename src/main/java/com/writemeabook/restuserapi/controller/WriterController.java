@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
@@ -24,7 +25,7 @@ public class WriterController {
     @GetMapping("/")
     public DeferredResult<List<User>> showAllUsers() {
         log.info("Start of showAllUsers method");
-        final DeferredResult<List<User>> deferredResult = new DeferredResult<>(5000L);
+        final DeferredResult<List<User>> deferredResult = new DeferredResult<>(5000L, Collections.emptyList());
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         forkJoinPool.submit(() -> {
             log.info("Processing of showAllUsers method");
