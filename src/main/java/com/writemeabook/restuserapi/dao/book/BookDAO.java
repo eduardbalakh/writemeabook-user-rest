@@ -1,7 +1,7 @@
 package com.writemeabook.restuserapi.dao.book;
 
 
-import com.writemeabook.restuserapi.model.Book;
+import com.writemeabook.restuserapi.hierarchicalmodel.Book;
 
 import java.util.List;
 

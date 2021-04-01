@@ -1,7 +1,7 @@
 package com.writemeabook.restuserapi.dao.chapter;
 
-import com.writemeabook.restuserapi.model.Book;
-import com.writemeabook.restuserapi.model.Chapter;
+import com.writemeabook.restuserapi.hierarchicalmodel.Book;
+import com.writemeabook.restuserapi.hierarchicalmodel.Chapter;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +25,20 @@ public class ChapterDAOImpl implements ChapterDAO {
     }
 
     @Override
-    public void saveChapter(Chapter chapter) {
+    public Chapter saveChapter(Chapter chapter) {
         Session session = entityManager.unwrap(Session.class);
         session.saveOrUpdate(chapter);
+        return chapter;
     }
 
     @Override
-    public Chapter getChapter(int id) {
+    public Chapter getChapter(Integer id) {
         Session session = entityManager.unwrap(Session.class);
         return session.get(Chapter.class, id);
     }
 
     @Override
-    public void deleteChapter(int id) {
+    public void deleteChapter(Integer id) {
         Session session = entityManager.unwrap(Session.class);
         Query<Book> query = session.createQuery("delete from Chapter " +
                 "where id=:chapterId");

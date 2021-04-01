@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.dao.user;
 
-import com.writemeabook.restuserapi.model.User;
+import com.writemeabook.restuserapi.hierarchicalmodel.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.dao.subsection;
 
-import com.writemeabook.restuserapi.model.Subsection;
+import com.writemeabook.restuserapi.hierarchicalmodel.Subsection;
 
 import java.util.List;
 

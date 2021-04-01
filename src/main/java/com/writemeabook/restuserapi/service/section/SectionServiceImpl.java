@@ -1,8 +1,10 @@
 package com.writemeabook.restuserapi.service.section;
 
 
+import com.writemeabook.restuserapi.VO.ResponseTemplateVO;
+import com.writemeabook.restuserapi.VO.TextStory;
 import com.writemeabook.restuserapi.dao.section.SectionDAO;
-import com.writemeabook.restuserapi.model.Section;
+import com.writemeabook.restuserapi.hierarchicalmodel.Section;
 import com.writemeabook.restuserapi.service.subsection.SubsectionService;
 import com.writemeabook.restuserapi.service.textstory.TextStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,12 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     @Transactional
+    public Section getSection(Integer id) {
+        return sectionDAO.getSection(id);
+    }
+
+    @Override
+    @Transactional
     public List<Section> getAllSections() {
         return sectionDAO.getAllSections();
     }
@@ -35,21 +43,14 @@ public class SectionServiceImpl implements SectionService {
             section.getSubsections().forEach(subsection -> {
                 subsectionService.saveSubsection(subsection);
             });
-        if (section.getText() != null)
-            textStoryService.saveText(section.getText());
         sectionDAO.saveSection(section);
         return section;
     }
 
-    @Override
-    @Transactional
-    public Section getSection(int id) {
-        return sectionDAO.getSection(id);
-    }
 
     @Override
     @Transactional
-    public void deleteSection(int id) {
+    public void deleteSection(Integer id) {
         Section sectionToDelete = getSection(id);
         if (sectionToDelete != null) {
             if (sectionToDelete.getSubsections() != null && sectionToDelete.getSubsections().size() > 0) {
@@ -59,7 +60,7 @@ public class SectionServiceImpl implements SectionService {
             }
             sectionDAO.deleteSection(id);
             if (sectionToDelete.getText() != null) {
-                textStoryService.deleteText(sectionToDelete.getText().getId());
+                textStoryService.deleteText(sectionToDelete.getText());
             }
         }
     }

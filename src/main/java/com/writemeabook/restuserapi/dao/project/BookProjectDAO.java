@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.dao.project;
 
-import com.writemeabook.restuserapi.model.BookProject;
+import com.writemeabook.restuserapi.hierarchicalmodel.BookProject;
 
 import java.util.List;
 

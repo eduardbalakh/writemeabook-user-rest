@@ -1,14 +1,15 @@
-package com.writemeabook.restuserapi.model;
+package com.writemeabook.restuserapi.hierarchicalmodel;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import com.writemeabook.restuserapi.VO.TextStory;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "subsections")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Subsection implements TreeTextEntity {
 
     @Id
@@ -28,20 +29,18 @@ public class Subsection implements TreeTextEntity {
     @ToString.Exclude
     private Section parentSection;*/
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "text_id")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private TextStory text;
-
-    public Subsection() {
-    }
+    /*    @OneToOne(fetch = FetchType.LAZY,
+                cascade = CascadeType.ALL)
+        @JoinColumn(name = "text_id")
+        @EqualsAndHashCode.Exclude
+        @ToString.Exclude*/
+    @Column(name = "text_id")
+    private Integer text;
 
     public Subsection(String title, int numOrder, TextStory text, Section parentSection) {
         this.title = title;
         this.numOrder = numOrder;
-        this.text = text;
+        //this.text = text;
         parentSection.addSubsectionToSection(this);
     }
 }

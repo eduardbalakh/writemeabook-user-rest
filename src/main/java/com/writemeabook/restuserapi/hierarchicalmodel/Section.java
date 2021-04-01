@@ -1,5 +1,6 @@
-package com.writemeabook.restuserapi.model;
+package com.writemeabook.restuserapi.hierarchicalmodel;
 
+import com.writemeabook.restuserapi.VO.TextStory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -39,12 +40,13 @@ public class Section implements TreeTextEntity {
     @ToString.Exclude
     private List<Subsection> subsections;
 
-    @OneToOne(fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "text_id")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private TextStory text;
+    /*    @OneToOne(fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL)
+        @JoinColumn(name = "text_id")
+        @EqualsAndHashCode.Exclude
+        @ToString.Exclude*/
+    @Column(name = "text_id")
+    private Integer text;
 
     public Section() {
     }
@@ -52,7 +54,7 @@ public class Section implements TreeTextEntity {
     public Section(String title, int numOrder, TextStory text, Chapter parentChapter) {
         this.title = title;
         this.numOrder = numOrder;
-        this.text = text;
+        //this.text = text;
         parentChapter.addSectionToChapter(this);
     }
 
@@ -67,7 +69,7 @@ public class Section implements TreeTextEntity {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", numOrder=" + numOrder +
-                ", text=" + text.getText() +
+                //", text=" + text.getText() +
                 '}';
     }
 }

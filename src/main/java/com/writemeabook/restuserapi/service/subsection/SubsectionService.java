@@ -1,7 +1,8 @@
 package com.writemeabook.restuserapi.service.subsection;
 
 
-import com.writemeabook.restuserapi.model.Subsection;
+import com.writemeabook.restuserapi.VO.ResponseTemplateVO;
+import com.writemeabook.restuserapi.hierarchicalmodel.Subsection;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface SubsectionService {
 
     Subsection saveSubsection(Subsection subsection);
 
-    Subsection getSubsection(int id);
+    Subsection getSubsection(Integer id);
 
-    void deleteSubsection(int id);
+    void deleteSubsection(Integer id);
 }

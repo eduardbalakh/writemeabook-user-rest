@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.controller;
 
-import com.writemeabook.restuserapi.model.User;
+import com.writemeabook.restuserapi.hierarchicalmodel.User;
 import com.writemeabook.restuserapi.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.web.context.request.async.DeferredResult;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ForkJoinPool;
 
@@ -63,6 +62,12 @@ public class WriterController {
         log.info("End of getUser method");
         return deferredResult;
     }
+
+/*    @GetMapping("/withtexts/{id}")
+    public ResponseTemplateVO getUserWithTextStories(@PathVariable("id") Integer userId) {
+        log.info("Start of getUserWithTextStories method");
+        return  userService.getUserWithTexts(userId);
+    }*/
 
     @PostMapping("/")
     public DeferredResult<User> saveUser(@RequestBody User user) {

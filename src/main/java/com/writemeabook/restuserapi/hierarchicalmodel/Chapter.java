@@ -1,5 +1,6 @@
-package com.writemeabook.restuserapi.model;
+package com.writemeabook.restuserapi.hierarchicalmodel;
 
+import com.writemeabook.restuserapi.VO.TextStory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -40,10 +41,11 @@ public class Chapter implements TreeTextEntity {
     private List<Section> sections;
 
 
-    @OneToOne(fetch = FetchType.EAGER,
+/*    @OneToOne(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
-    @JoinColumn(name = "text_id")
-    private TextStory text;
+    @JoinColumn(name = "text_id")*/
+    @Column(name = "text_id")
+    private Integer text;
 
     public Chapter() {
     }
@@ -52,7 +54,6 @@ public class Chapter implements TreeTextEntity {
         this.title = title;
         this.numOrder = numOrder;
         //this.parentBook = parentBook;
-        this.text = text;
         parentBook.addChapterToBook(this);
     }
 
@@ -69,7 +70,7 @@ public class Chapter implements TreeTextEntity {
                 ", title='" + title +
                 ", numOrder=" + numOrder +
                 //", parentBook=" + parentBook.getTitle() +
-                ", text=" + text.getText() +
+                //", text=" + text.getText() +
                 '}';
     }
 

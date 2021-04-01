@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.dao.user;
 
-import com.writemeabook.restuserapi.model.User;
+import com.writemeabook.restuserapi.hierarchicalmodel.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;

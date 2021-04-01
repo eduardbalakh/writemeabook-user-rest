@@ -1,7 +1,7 @@
 package com.writemeabook.restuserapi.dao.subsection;
 
-import com.writemeabook.restuserapi.model.BookProject;
-import com.writemeabook.restuserapi.model.Subsection;
+import com.writemeabook.restuserapi.hierarchicalmodel.BookProject;
+import com.writemeabook.restuserapi.hierarchicalmodel.Subsection;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.writemeabook.restuserapi.service.book;
 
 
 import com.writemeabook.restuserapi.dao.book.BookDAO;
-import com.writemeabook.restuserapi.model.Book;
+import com.writemeabook.restuserapi.hierarchicalmodel.Book;
 import com.writemeabook.restuserapi.service.chapter.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

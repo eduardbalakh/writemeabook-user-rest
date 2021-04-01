@@ -1,7 +1,8 @@
 package com.writemeabook.restuserapi.service.section;
 
 
-import com.writemeabook.restuserapi.model.Section;
+import com.writemeabook.restuserapi.VO.ResponseTemplateVO;
+import com.writemeabook.restuserapi.hierarchicalmodel.Section;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface SectionService {
 
     Section saveSection(Section section);
 
-    Section getSection(int id);
+    Section getSection(Integer id);
 
-    void deleteSection(int id);
+    void deleteSection(Integer id);
 }

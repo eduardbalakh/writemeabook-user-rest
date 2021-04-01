@@ -1,4 +1,4 @@
-package com.writemeabook.restuserapi.model;
+package com.writemeabook.restuserapi.hierarchicalmodel;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

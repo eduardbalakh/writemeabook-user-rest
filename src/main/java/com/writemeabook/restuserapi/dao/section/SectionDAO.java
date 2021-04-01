@@ -1,6 +1,6 @@
 package com.writemeabook.restuserapi.dao.section;
 
-import com.writemeabook.restuserapi.model.Section;
+import com.writemeabook.restuserapi.hierarchicalmodel.Section;
 
 import java.util.List;
 

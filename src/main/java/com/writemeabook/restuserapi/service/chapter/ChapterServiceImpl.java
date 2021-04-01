@@ -1,8 +1,7 @@
 package com.writemeabook.restuserapi.service.chapter;
 
-
 import com.writemeabook.restuserapi.dao.chapter.ChapterDAO;
-import com.writemeabook.restuserapi.model.Chapter;
+import com.writemeabook.restuserapi.hierarchicalmodel.Chapter;
 import com.writemeabook.restuserapi.service.section.SectionService;
 import com.writemeabook.restuserapi.service.textstory.TextStoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,12 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     @Transactional
+    public Chapter getChapter(Integer id) {
+        return chapterDAO.getChapter(id);
+    }
+
+    @Override
+    @Transactional
     public List<Chapter> getAllChapters() {
         return chapterDAO.getAllChapters();
     }
@@ -35,21 +40,14 @@ public class ChapterServiceImpl implements ChapterService {
             chapter.getSections().forEach(section -> {
                 sectionService.saveSection(section);
             });
-        if (chapter.getText() != null)
-            textStoryService.saveText(chapter.getText());
         chapterDAO.saveChapter(chapter);
         return chapter;
     }
 
-    @Override
-    @Transactional
-    public Chapter getChapter(int id) {
-        return chapterDAO.getChapter(id);
-    }
 
     @Override
     @Transactional
-    public void deleteChapter(int id) {
+    public void deleteChapter(Integer id) {
         Chapter chapterToDelete = getChapter(id);
         if (chapterToDelete != null) {
             if (chapterToDelete.getSections() != null && chapterToDelete.getSections().size() > 0) {
@@ -60,7 +58,7 @@ public class ChapterServiceImpl implements ChapterService {
 
             chapterDAO.deleteChapter(id);
             if (chapterToDelete.getText() != null) {
-                textStoryService.deleteText(chapterToDelete.getText().getId());
+                textStoryService.deleteText(chapterToDelete.getText());
             }
         }
     }

@@ -2,7 +2,7 @@ package com.writemeabook.restuserapi.service.user;
 
 
 import com.writemeabook.restuserapi.dao.user.UserDAO;
-import com.writemeabook.restuserapi.model.User;
+import com.writemeabook.restuserapi.hierarchicalmodel.User;
 import com.writemeabook.restuserapi.service.project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,4 +46,11 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(int id) {
         userDAO.deleteUser(id);
     }
+
+/*    @Override
+    public ResponseTemplateVO getUserWithTexts(Integer userId) {
+        ResponseTemplateVO vo = new ResponseTemplateVO();
+        User user = userDAO.getUser(userId);
+
+    }*/
 }
